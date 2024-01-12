@@ -1,0 +1,27 @@
+body {
+  font-family: 'Helvetica', sans-serif;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f0f0f0;
+  height: 100vh;
+}
+
+.widget-container {
+  width: 90%;
+  max-width: 400px;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 15px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+#clock,
+#moments,
+#tasks {
+  font-size: 20px;
+}
