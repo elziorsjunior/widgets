@@ -1,26 +1,10 @@
 function updateClock() {
-  const now = new Date();
-  const time = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
-  document.getElementById('clock-content').innerText = time;
-}
+            const clockElement = document.getElementById('clock');
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const timeString = `${hours}:${minutes}`;
+            clockElement.textContent = timeString;
+        }
 
-function updateMoments() {
-  // Lógica para atualizar o conteúdo de momentos
-  const momentsContent = "Momento 1\nDas 08:00 até 09:00";
-  document.getElementById('moments-content').innerText = momentsContent;
-}
-
-function updateTasks() {
-  // Lógica para atualizar o conteúdo de tarefas
-  const tasksContent = "Tarefa 1\nRealizar algo importante";
-  document.getElementById('tasks-content').innerText = tasksContent;
-}
-
-function updateWidgets() {
-  updateClock();
-  updateMoments();
-  updateTasks();
-}
-
-setInterval(updateWidgets, 1000);
-updateWidgets(); // Atualizar widgets imediatamente
+        setInterval(updateClock, 1000);
