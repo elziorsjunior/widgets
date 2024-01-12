@@ -5,7 +5,11 @@ body {
             align-items: center;
             justify-content: center;
             height: 100vh;
+<<<<<<< HEAD
             background-color: transparent;
+=======
+          
+>>>>>>> d2e885d1e6860cf80fed30b0a3d589b7c2248eea
         }
 
         .clock-container {
