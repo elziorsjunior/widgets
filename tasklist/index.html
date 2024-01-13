@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <script defer src="script.js"></script>
-  <title>Notion Widgets</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="script.js"></script>
+    <title>Task List</title>
 </head>
 <body>
-
-  <div class="widget-container" id="clock">
-    <p id="clock-content">Carregando...</p>
-  </div>
-
-  <div class="widget-container" id="moments">
-    <p id="moments-content">Carregando...</p>
-  </div>
-
-  <div class="widget-container" id="tasks">
-    <p id="tasks-content">Carregando...</p>
-  </div>
-
+    <div id="container">
+        <!-- Tasks List -->
+        <div id="tasks">
+            <div id="notification">Sorry, your task list is empty.</div>
+            <ul id="tasksList">
+            </ul>
+        </div>
+        
+        <div id="footer">
+            <input id="taskInput" type="text" placeholder="Your task"/>
+            <button id="taskAdd">+</button>
+        </div>
+    </div>
 </body>
 </html>

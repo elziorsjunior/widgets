@@ -5,22 +5,44 @@ body {
             align-items: center;
             justify-content: center;
             height: 100vh;
-<<<<<<< HEAD
-            background-color: transparent;
-=======
-          
->>>>>>> d2e885d1e6860cf80fed30b0a3d589b7c2248eea
-        }
+}
 
         .clock-container {
             border-radius: 20px;
-            background-color: #ffffff;
             padding: 50px 75px;
+            background: linear-gradient(130deg, #000000, #4600d4, #1100ff, #5600ce, #000000);
+    background-size: 1000% 1000%;
+
+    -webkit-animation: AnimationName 40s ease infinite;
+    -moz-animation: AnimationName 40s ease infinite;
+    -o-animation: AnimationName 40s ease infinite;
+    animation: AnimationName 40s ease infinite;
         }
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:27% 0%}
+    50%{background-position:74% 100%}
+    100%{background-position:27% 0%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:27% 0%}
+    50%{background-position:74% 100%}
+    100%{background-position:27% 0%}
+}
+@-o-keyframes AnimationName {
+    0%{background-position:27% 0%}
+    50%{background-position:74% 100%}
+    100%{background-position:27% 0%}
+}
+@keyframes AnimationName {
+    0%{background-position:27% 0%}
+    50%{background-position:74% 100%}
+    100%{background-position:27% 0%}
+}
 
         .digital-clock {
             font-size: 3em;
           font-weight: 300;
-            color: #333333;
+            color: #ffffff;
             font-family: 'Roboto', sans-serif;
         }

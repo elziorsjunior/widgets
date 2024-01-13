@@ -1,26 +1,47 @@
-function updateClock() {
-  const now = new Date();
-  const time = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
-  document.getElementById('clock-content').innerText = time;
-}
+$(function() {
+    // Attaching DOM element to variables
+    var $tasksList = $("#tasksList");
+    var $taskInput = $("#taskInput");
+    var $notification = $("#notification");
 
-function updateMoments() {
-  // Lógica para atualizar o conteúdo de momentos
-  const momentsContent = "Momento 1\nDas 08:00 até 09:00";
-  document.getElementById('moments-content').innerText = momentsContent;
-}
+    // Counting amount of items in the list
+    // To display or hide notification
+    var displayNotification = function() {
+        if(!$tasksList.children().length){
+            $notification.fadeIn("fast");
+        } else {
+            $notification.css("display", "none");
+        }
+    }
 
-function updateTasks() {
-  // Lógica para atualizar o conteúdo de tarefas
-  const tasksContent = "Tarefa 1\nRealizar algo importante";
-  document.getElementById('tasks-content').innerText = tasksContent;
-}
+    // Attaching event handler to the add button
+    $("#taskAdd").on("click", function() {
+        // Returning false if the input is empty
+        if(!$taskInput.val()) { return false; }
 
-function updateWidgets() {
-  updateClock();
-  updateMoments();
-  updateTasks();
-}
+        // Appending li with the input value
+        $tasksList.append("<li>" + $taskInput.val() + "<button class='delete'>&#10006</button></li>");
 
-setInterval(updateWidgets, 1000);
-updateWidgets(); // Atualizar widgets imediatamente
+        // Cleaning input after add event
+        $taskInput.val("");
+
+        // Display/Hide Notification
+        displayNotification();
+
+        // Attaching even handler to the delete button
+        $(".delete").on("click", function() {
+            // Assigning "this" to variable, as it doesn't
+            // work correctly with setTimeout() function
+            var $parent = $(this).parent();
+
+            // Displaying CSS animation
+            $parent.css("animation", "fadeOut .3s linear");
+
+            // Timeout on remove function
+            setTimeout(function(){
+                $parent.remove();
+                displayNotification();
+            }, 295);
+        });
+    });
+});
