@@ -3,24 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="script.js"></script>
-    <title>Task List</title>
+    <title>Tasklist - Em Manutenção</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .maintenance-container {
+            text-align: center;
+        }
+
+        .maintenance-icon {
+            font-size: 64px;
+            color: #ff6961;
+        }
+
+        .maintenance-text {
+            font-size: 24px;
+            color: #333;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <div id="container">
-        <!-- Tasks List -->
-        <div id="tasks">
-            <div id="notification">Sorry, your task list is empty.</div>
-            <ul id="tasksList">
-            </ul>
-        </div>
-        
-        <div id="footer">
-            <input id="taskInput" type="text" placeholder="Your task"/>
-            <button id="taskAdd">+</button>
-        </div>
+    <div class="maintenance-container">
+        <div class="maintenance-icon">&#9888;</div>
+        <div class="maintenance-text">Tasklist em Manutenção</div>
     </div>
 </body>
 </html>
