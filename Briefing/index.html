@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Briefing Form</title>
+</head>
+<body>
+    <h2>Briefing Form</h2>
+    <form id="briefingForm">
+        
+        <!-- 1. Informações Gerais -->
+        <div class="group">
+            <h3>1. Informações Gerais</h3>
+            <label for="companyName">Nome do Negócio:</label>
+            <input type="text" id="companyName" name="companyName" placeholder="Apple, Amazon..." required>
+
+            <label for="slogan">Slogan:</label>
+            <input type="text" id="slogan" name="slogan" placeholder="Transformando Ideias em Tecnologia">
+            
+            <label for="setorAtuacao">Setor de Atuação:</label>
+            <select id="setorAtuacao" name="setorAtuacao" required>
+                <option value="Tecnologia">Tecnologia</option>
+                <option value="Saúde">Saúde</option>
+                <option value="Educação">Educação</option>
+                <option value="Entretenimento">Entretenimento</option>
+                <option value="Agricultura">Agricultura</option>
+                <option value="Automotivo">Automotivo</option>
+                <option value="Bancário e Financeiro">Bancário e Financeiro</option>
+                <option value="Construção Civil">Construção Civil</option>
+                <option value="Eletroeletrônicos">Eletroeletrônicos</option>
+                <option value="Indústria">Indústria</option>
+                <option value="Logística e Transporte">Logística e Transporte</option>
+                <option value="Moda">Moda</option>
+                <option value="Telecomunicações">Telecomunicações</option>
+                <option value="Varejo">Varejo</option>
+            </select>
+            
+            <label for="publicoAlvo">Público-Alvo:</label>
+            <select id="publicoAlvo" name="publicoAlvo[]" multiple required>
+                <option value="Empresas de TI">Empresas de TI</option>
+                <option value="Entusiastas de Tecnologia">Entusiastas de Tecnologia</option>
+                <option value="Profissionais da Saúde">Profissionais da Saúde</option>
+                <option value="Estudantes">Estudantes</option>
+                <option value="Clientes Corporativos">Clientes Corporativos</option>
+                <option value="Crianças e Adolescentes">Crianças e Adolescentes</option>
+                <option value="Profissionais da Indústria">Profissionais da Indústria</option>
+                <option value="Consumidores Financieros">Consumidores Financieros</option>
+                <!-- Adicione mais opções conforme necessário -->
+            </select>
+            
+            <label for="concorrentes">Concorrentes Principais:</label>
+            <input type="text" id="concorrentes" name="concorrentes" placeholder="Tech Innovate, FutureTech" required>
+        </div>
+
+        <!-- 2. Visão Geral da Marca -->
+        <div class="group">
+            <h3>2. Visão Geral da Marca</h3>
+            <label for="valoresMarca">Valores da Marca:</label>
+            <input type="text" id="valoresMarca" name="valoresMarca" placeholder="Inovação, Confiança" required>
+
+            <label for="personalidadeMarca">Personalidade da Marca:</label>
+            <input type="text" id="personalidadeMarca" name="personalidadeMarca" placeholder="Moderna, Confiável, Inovadora" required>
+
+            <label for="atributosMarca">Atributos Essenciais que a Marca Deve Transmitir:</label>
+            <input type="text" id="atributosMarca" name="atributosMarca" placeholder="Qualidade, Acessibilidade" required>
+        </div>
+
+        <!-- 3. Elementos Visuais -->
+        <div class="group">
+            <h3>3. Elementos Visuais</h3>
+            <label for="coresPreferidas">Cores Preferidas:</label>
+            <input type="text" id="coresPreferidas" name="coresPreferidas" placeholder="Azul, Preto, Prata" required>
+
+            <label for="estiloDesign">Estilo de Design:</label>
+            <input type="text" id="estiloDesign" name="estiloDesign" placeholder="Minimalista, Retrô, Futurista" required>
+
+            <label for="elementosLogo">Elementos que Gostaria de Ver no Logo:</label>
+            <input type="text" id="elementosLogo" name="elementosLogo" placeholder="Símbolos tecnológicos, Linhas limpas">
+            
+            <label for="referenciasVisuais">Referências Visuais:</label>
+            <input type="text" id="referenciasVisuais" name="referenciasVisuais" placeholder="Logotipos de empresas X, Paleta de cores Y">
+        </div>
+
+        <!-- Adicione mais grupos conforme necessário -->
+
+        <!-- Adicionar botão para gerar PDF -->
+        <button onclick="generatePDF()">Gerar PDF</button>
+    </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+    <script>
+        function generatePDF() {
+            // Cria um novo documento PDF
+            const pdf = new jsPDF();
+
+            // Pega todos os elementos de input do formulário
+            const inputs = $('#briefingForm input, #briefingForm select');
+
+            // Inicializa a posição y
+            let y = 20;
+
+            // Itera sobre os elementos de input
+            inputs.each(function(index) {
+                const question = $('label[for="' + this.id + '"]').text();
+                let answer;
+
+                if ($(this).is('select') && $(this).prop('multiple')) {
+                    // Se é um campo de seleção múltipla, obtém todas as opções selecionadas
+                    answer = $(this).find('option:selected').map(function() {
+                        return $(this).text();
+                    }).get().join(', ');
+                } else {
+                    // Caso contrário, obtém o valor normal do campo
+                    answer = this.value;
+                }
+
+                // Adiciona a pergunta e resposta ao PDF
+                pdf.text(question, 20, y);
+                pdf.text(answer, 70, y);
+
+                // Incrementa a posição y
+                y += 10;
+            });
+
+            // Salva o PDF com o nome "ficha-de-marca-NOME_DA_EMPRESA.pdf"
+            pdf.save('ficha-de-marca-' + $('#companyName').val() + '.pdf');
+        }
+    </script>
+</body>
+</html>

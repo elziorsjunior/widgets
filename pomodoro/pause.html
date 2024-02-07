@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widget Pomodoro - Pause</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+        
+        <div id="timer" onclick="toggleTimer(resumeWork)">05:00</div>
+    
+    <script src="timer.js"></script>
+    <script>
+        timeLeft = 5 * 60; // 5 minutes in seconds
+
+        function resumeWork() {
+            alert('Pause time completed! Back to work.');
+            resetTimer();
+            window.location.replace('work.html');
+        }
+
+        // Handle double click for reset
+        let lastClickTime = 0;
+        document.getElementById('timer').addEventListener('click', function () {
+            const currentTime = new Date().getTime();
+            const timeSinceLastClick = currentTime - lastClickTime;
+
+            if (timeSinceLastClick <= 300) { // 300 milliseconds threshold for double click
+                resetTimer();
+            }
+
+            lastClickTime = currentTime;
+        });
+    </script>
+</body>
+</html>
