@@ -3,38 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Em Manutenção</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-        }
-
-        .maintenance-container {
-            text-align: center;
-        }
-
-        .maintenance-icon {
-            font-size: 64px;
-            color: #ff6961;
-        }
-
-        .maintenance-text {
-            font-size: 24px;
-            color: #333;
-            margin-top: 20px;
-        }
-    </style>
+    <title>Timer de 1 Hora</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="maintenance-container">
-        <div class="maintenance-icon">&#9888;</div>
-        <div class="maintenance-text">Manutenção</div>
+
+<div id="timer">60:00</div>
+
+<div id="menu">
+    <button id="start-pause" title="Start/Pause"><img src="https://img.icons8.com/ios-glyphs/30/ffffff/play.png"/></button>
+    <button id="adjust-timer" title="Ajustar Timer"><img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png"/></button>
+    <button id="change-background" title="Alterar Background"><img src="https://img.icons8.com/ios-glyphs/30/ffffff/picture.png"/></button>
+    <button id="fullscreen" title="Tela Cheia"><img src="https://img.icons8.com/ios-glyphs/30/ffffff/full-screen.png"/></button>
+</div>
+
+<!-- Modal para ajuste do timer -->
+<div id="date-time-modal" class="modal">
+    <div class="modal-content">
+        <h3>Selecionar Início e Fim do Timer</h3>
+        <label for="start-datetime">Início:</label>
+        <input type="datetime-local" id="start-datetime">
+        <label for="end-datetime">Fim:</label>
+        <input type="datetime-local" id="end-datetime">
+        <button id="set-timer">Definir Timer</button>
+        <button id="close-date-time-modal">Cancelar</button>
     </div>
+</div>
+
+<!-- Modal para alterar o background -->
+<div id="background-modal" class="modal">
+    <div class="modal-content">
+        <h3>Alterar Plano de Fundo</h3>
+        <label for="background-url">URL do Plano de Fundo:</label>
+        <input type="text" id="background-url" placeholder="Insira a URL do GIF, imagem ou vídeo">
+        <button id="set-background">Alterar Plano de Fundo</button>
+        <button id="close-background-modal">Cancelar</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
 </body>
 </html>

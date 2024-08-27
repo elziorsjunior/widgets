@@ -5,10 +5,14 @@ let changeBackgroundButton = document.getElementById('change-background');
 let fullscreenButton = document.getElementById('fullscreen');
 
 let dateTimeModal = document.getElementById('date-time-modal');
+let backgroundModal = document.getElementById('background-modal');
 let setTimerButton = document.getElementById('set-timer');
-let closeModalButton = document.getElementById('close-modal');
+let closeDateTimeModalButton = document.getElementById('close-date-time-modal');
+let closeBackgroundModalButton = document.getElementById('close-background-modal');
 let startDateTimeInput = document.getElementById('start-datetime');
 let endDateTimeInput = document.getElementById('end-datetime');
+let backgroundUrlInput = document.getElementById('background-url');
+let setBackgroundButton = document.getElementById('set-background');
 
 let countdown;
 let timeRemaining = 60 * 60; // 60 minutos em segundos
@@ -78,16 +82,25 @@ setTimerButton.addEventListener('click', function() {
     }
 });
 
-closeModalButton.addEventListener('click', function() {
+closeDateTimeModalButton.addEventListener('click', function() {
     dateTimeModal.style.display = "none";
 });
 
 changeBackgroundButton.addEventListener('click', function() {
-    let imageUrl = prompt("Insira a URL do GIF, imagem ou vídeo para o fundo:");
+    backgroundModal.style.display = "flex";
+});
+
+setBackgroundButton.addEventListener('click', function() {
+    let imageUrl = backgroundUrlInput.value;
     if (imageUrl) {
         document.body.style.background = `url('${imageUrl}') no-repeat center center fixed`;
         document.body.style.backgroundSize = 'cover';
+        backgroundModal.style.display = "none";
     }
+});
+
+closeBackgroundModalButton.addEventListener('click', function() {
+    backgroundModal.style.display = "none";
 });
 
 fullscreenButton.addEventListener('click', function() {
