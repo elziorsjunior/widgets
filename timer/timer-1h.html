@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer de 1 Hora</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Mono:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div id="timer">60:00</div>
+
+<div id="menu">
+    <button id="start-pause" title="Start/Pause"><img src="https://img.icons8.com/ios-glyphs/30/ffffff/play.png"/></button>
+    <button id="adjust-timer" title="Ajustar Timer"><img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png"/></button>
+    <button id="change-background" title="Alterar Background"><img src="https://img.icons8.com/ios-glyphs/30/ffffff/picture.png"/></button>
+    <button id="fullscreen" title="Tela Cheia"><img src="https://img.icons8.com/ios-glyphs/30/ffffff/full-screen.png"/></button>
+</div>
+
+<!-- Modais para seleção de data e hora -->
+<div id="date-time-modal" class="modal">
+    <div class="modal-content">
+        <h3>Selecionar Início e Fim do Timer</h3>
+        <label for="start-datetime">Início:</label>
+        <input type="datetime-local" id="start-datetime">
+        <label for="end-datetime">Fim:</label>
+        <input type="datetime-local" id="end-datetime">
+        <button id="set-timer">Definir Timer</button>
+        <button id="close-modal">Cancelar</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

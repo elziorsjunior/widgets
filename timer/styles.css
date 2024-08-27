@@ -1,27 +1,107 @@
-body {
-  font-family: 'Helvetica', sans-serif;
-  margin: 0;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #f0f0f0;
-  height: 100vh;
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('https://i.gifer.com/3RAB.gif') no-repeat center center fixed;
+    background-size: cover;
+    font-family: "Red Hat Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+    color: #fff;
+    position: relative;
 }
 
-.widget-container {
-  width: 90%;
-  max-width: 400px;
-  padding: 20px;
-  margin: 20px 0;
-  border-radius: 15px;
-  background-color: #ffffff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
+#timer {
+    font-size: 9rem;
+    user-select: none;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
-#clock,
-#moments,
-#tasks {
-  font-size: 20px;
+#menu {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+#menu button {
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#menu button img {
+    width: 30px;
+    height: 30px;
+}
+
+#menu button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Estilos para o modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+}
+
+.modal-content {
+    background: #333;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+}
+
+.modal-content label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.modal-content input {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.modal-content button {
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #555;
+    color: white;
+    transition: background 0.3s;
+}
+
+.modal-content button:hover {
+    background: #777;
+}
+
+.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    z-index: 10;
 }

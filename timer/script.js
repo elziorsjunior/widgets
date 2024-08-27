@@ -1,26 +1,99 @@
-function updateClock() {
-  const now = new Date();
-  const time = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
-  document.getElementById('clock-content').innerText = time;
+let timerElement = document.getElementById('timer');
+let startPauseButton = document.getElementById('start-pause');
+let adjustTimerButton = document.getElementById('adjust-timer');
+let changeBackgroundButton = document.getElementById('change-background');
+let fullscreenButton = document.getElementById('fullscreen');
+
+let dateTimeModal = document.getElementById('date-time-modal');
+let setTimerButton = document.getElementById('set-timer');
+let closeModalButton = document.getElementById('close-modal');
+let startDateTimeInput = document.getElementById('start-datetime');
+let endDateTimeInput = document.getElementById('end-datetime');
+
+let countdown;
+let timeRemaining = 60 * 60; // 60 minutos em segundos
+let isPaused = false;
+
+function updateTimerDisplay(time) {
+    let minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+    timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 }
 
-function updateMoments() {
-  // Lógica para atualizar o conteúdo de momentos
-  const momentsContent = "Momento 1\nDas 08:00 até 09:00";
-  document.getElementById('moments-content').innerText = momentsContent;
+function startTimer() {
+    countdown = setInterval(() => {
+        if (timeRemaining <= 0) {
+            clearInterval(countdown);
+            countdown = null;
+            timerElement.textContent = "00:00";
+            return;
+        }
+        timeRemaining--;
+        updateTimerDisplay(timeRemaining);
+    }, 1000);
 }
 
-function updateTasks() {
-  // Lógica para atualizar o conteúdo de tarefas
-  const tasksContent = "Tarefa 1\nRealizar algo importante";
-  document.getElementById('tasks-content').innerText = tasksContent;
-}
+startPauseButton.addEventListener('click', function() {
+    if (!countdown && !isPaused) {
+        startTimer();
+        startPauseButton.innerHTML = '<img src="https://img.icons8.com/ios-glyphs/30/ffffff/pause.png"/>';
+    } else if (countdown && !isPaused) {
+        clearInterval(countdown);
+        countdown = null;
+        isPaused = true;
+        startPauseButton.innerHTML = '<img src="https://img.icons8.com/ios-glyphs/30/ffffff/play.png"/>';
+    } else if (isPaused) {
+        startTimer();
+        isPaused = false;
+        startPauseButton.innerHTML = '<img src="https://img.icons8.com/ios-glyphs/30/ffffff/pause.png"/>';
+    }
+});
 
-function updateWidgets() {
-  updateClock();
-  updateMoments();
-  updateTasks();
-}
+adjustTimerButton.addEventListener('click', function() {
+    dateTimeModal.style.display = "flex";
+});
 
-setInterval(updateWidgets, 1000);
-updateWidgets(); // Atualizar widgets imediatamente
+setTimerButton.addEventListener('click', function() {
+    let startDateTime = startDateTimeInput.value;
+    let endDateTime = endDateTimeInput.value;
+
+    if (startDateTime && endDateTime) {
+        let startTime = new Date(startDateTime).getTime();
+        let endTime = new Date(endDateTime).getTime();
+        let now = new Date().getTime();
+
+        if (startTime <= now && endTime > now) {
+            timeRemaining = Math.floor((endTime - now) / 1000);
+            updateTimerDisplay(timeRemaining);
+            if (countdown) {
+                clearInterval(countdown);
+                countdown = null;
+            }
+            startPauseButton.innerHTML = '<img src="https://img.icons8.com/ios-glyphs/30/ffffff/play.png"/>';
+            isPaused = true;
+            dateTimeModal.style.display = "none";
+        } else {
+            alert("As datas e horas informadas são inválidas.");
+        }
+    }
+});
+
+closeModalButton.addEventListener('click', function() {
+    dateTimeModal.style.display = "none";
+});
+
+changeBackgroundButton.addEventListener('click', function() {
+    let imageUrl = prompt("Insira a URL do GIF, imagem ou vídeo para o fundo:");
+    if (imageUrl) {
+        document.body.style.background = `url('${imageUrl}') no-repeat center center fixed`;
+        document.body.style.backgroundSize = 'cover';
+    }
+});
+
+fullscreenButton.addEventListener('click', function() {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+    } else {
+        document.exitFullscreen();
+    }
+});
