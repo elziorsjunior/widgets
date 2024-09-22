@@ -1,0 +1,75 @@
+/* Global Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00000000;
+    font-family: "Space Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+  }
+  
+  #calendar-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  #calendar-container.small {
+    width: 300px;
+    height: 300px;
+  }
+  
+  #calendar-container.large {
+    width: 600px;
+    height: 600px;
+  }
+  
+  #calendar-container.fullscreen {
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  /* Estilos para os textos */
+  #weekday, #day, #month {
+    margin: 0;
+    padding: 0;
+    font-size: 2rem;
+    transition: font-size 0.3s ease;
+  }
+  
+  #day {
+    font-size: 7rem; /* Dia maior */
+    font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-style: normal;
+  }
+  
+  #calendar-container.large #weekday,
+  #calendar-container.large #day,
+  #calendar-container.large #month {
+    font-size: 3rem; /* Aumenta o tamanho no modo grande */
+  }
+  
+  #calendar-container.large #day {
+    font-size: 6rem; /* Aumenta o dia no modo grande */
+  }
+  
+  #calendar-container.fullscreen #weekday,
+  #calendar-container.fullscreen #month {
+    font-size: 5rem; /* Texto maior em fullscreen */
+  }
+  
+  #calendar-container.fullscreen #day {
+    font-size: 10rem; /* Dia maior em fullscreen */
+  }
+  
