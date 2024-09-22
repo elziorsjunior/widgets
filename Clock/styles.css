@@ -1,0 +1,53 @@
+/* Global Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #28282800;
+    font-family: "Space Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  #clock-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  #clock-container.small {
+    width: 300px;
+    height: 300px;
+  }
+  
+  #clock-container.large {
+    width: 500px;
+    height: 500px;
+  }
+  
+  #clock-container.fullscreen {
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  #time {
+    font-size: 3rem;
+    transition: font-size 0.3s ease;
+  }
+  
+  #clock-container.large #time {
+    font-size: 5rem; /* Aumenta o tamanho do texto no modo grande */
+  }
+  
+  #clock-container.fullscreen #time {
+    font-size: 8rem; /* Aumenta o tamanho do texto no modo fullscreen */
+  }
+  
